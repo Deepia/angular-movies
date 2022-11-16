@@ -41,4 +41,8 @@ export class AppComponent  implements  OnInit {
   }
   moviesInTheater!: { name: string; releaseDate: Date; price: number; }[];
   futureReleases!: { name: string; releaseDate: Date; price: number; }[];
+
+  fetchRating(index: number){
+    alert(index);
+  }
 }
