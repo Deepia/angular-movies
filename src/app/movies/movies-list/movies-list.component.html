@@ -1,11 +1,10 @@
-
-<div  *ngIf="movies?.length === 0">
-  There are no record to disply.
-</div>
-<img *ngIf="!movies" src="https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b9520s2shinf91b6zdrgi8odyg4ab7241md7jfi37id7&rid=200w.gif&ct=g"/>
+<app-generic-list  [list]="movies">
+  <ng-container content>
 <div  *ngFor="let movie of movies; let index = index;" class="movi-continer">
-<p>{{index+1}} {{movie.name}}<button style="margin-left:1rem;" (click)="remove(index)">Remove</button></p>
-
-<p>{{movie.releaseDate |date:"dd-MM-yyyy"}}</p>
-<p>{{movie.price |currency}}</p>
-</div>
+  <p>{{index+1}} {{movie.name}}<button style="margin-left:1rem;" (click)="remove(index)">Remove</button></p>
+  
+  <p>{{movie.releaseDate |date:"dd-MM-yyyy"}}</p>
+  <p>{{movie.price |currency}}</p>
+  </div>
+</ng-container>
+</app-generic-list>

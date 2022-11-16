@@ -1,13 +1,11 @@
-<p>Hello World</p>
-{{title}}
-<div>
-  sum  of   2  and 2 is {{2+2}}
-</div>
-<div>
-  double   of   4   is {{double(4)}}
-</div>
+<!-- 
+<input type="file" style="display:none;" #uploader/>
+<button (click)="uploader.click()">Upload file</button> -->
+<app-menu></app-menu>
+<div class="container">
 <h5>Movie Details</h5>
 <h6>In theater</h6>
 <app-movies-list [movies]="moviesInTheater"></app-movies-list>
 <h6>Future releases</h6>
 <app-movies-list [movies]="futureReleases"></app-movies-list>
+</div>
