@@ -36,6 +36,7 @@ export class AppComponent  implements  OnInit {
     }, 3000);
   }
   title = 'angular-movies';
+  display=true;
   double(n: number){
     return 2*n;
   }
