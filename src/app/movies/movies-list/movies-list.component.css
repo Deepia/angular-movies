@@ -1,1 +1,24 @@
-.movi-continer{border:   1px solid rgb(51, 47, 47); margin: 10px;}
+.movi-continer{
+    margin-right: 2%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.movis-continer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+p{
+    max-width: 225px;
+    height: 44px;
+    font-size: 15px;
+    font-weight: bold;
+}
+image{
+    width: 225px;
+    height: 300px;
+}
+button{
+    margin-left: 1em;
+}

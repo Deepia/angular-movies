@@ -2,14 +2,10 @@
 <input type="file" style="display:none;" #uploader/>
 <button (click)="uploader.click()">Upload file</button> -->
 <app-menu></app-menu>
-<input type="text" (input)="title = $any($event.target).value"/>
+<!-- <input type="text" (input)="title = $any($event.target).value"/>
 <input type="checkbox" checked (change)="display= !display"/>
 <app-lifecycletest  *ngIf="display" [title]="title"></app-lifecycletest>
-<app-rating (getRating)="fetchRating($event)"></app-rating>
+<app-rating (getRating)="fetchRating($event)"></app-rating> -->
 <div class="container">
-<h5>Movie Details</h5>
-<h6>In theater</h6>
-<app-movies-list [movies]="moviesInTheater"></app-movies-list>
-<h6>Future releases</h6>
-<app-movies-list [movies]="futureReleases"></app-movies-list>
+    <router-outlet></router-outlet>
 </div>
