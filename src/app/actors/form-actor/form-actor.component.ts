@@ -1,7 +1,7 @@
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { actorCreationDTO } from '../actors.model';
+import { actorCreationDTO, actorDTO } from '../actors.model';
 
 @Component({
   selector: 'app-form-actor',
@@ -13,17 +13,22 @@ export class FormActorComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
   form!: FormGroup;
   @Input()
-  model!: actorCreationDTO;
+  model!: actorDTO;
   @Output()
   onSaveChanges= new EventEmitter<actorCreationDTO>();
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name:['',{validators: [Validators.required]}],
-      dateOfBirth: ''
+      dateOfBirth: '',
+      picture: ''
     });
     if(this.model !== undefined){
+      
       this.form.patchValue(this.model);
     }
+  }
+  onImageSelected(image: any){
+     this.form.get('picture')?.setValue(image);
   }
   saveChanges(){
     this.onSaveChanges.emit(this.form.value);
