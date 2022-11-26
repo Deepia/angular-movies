@@ -20,12 +20,16 @@ export class FormActorComponent implements OnInit {
     this.form = this.formBuilder.group({
       name:['',{validators: [Validators.required]}],
       dateOfBirth: '',
-      picture: ''
+      picture: '',
+      biography: ''
     });
     if(this.model !== undefined){
       
       this.form.patchValue(this.model);
     }
+  }
+  changeMarkdown(content: any){
+     this.form.get('biography')?.setValue(content);
   }
   onImageSelected(image: any){
      this.form.get('picture')?.setValue(image);
