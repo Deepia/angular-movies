@@ -1,8 +1,8 @@
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { coordinatesMap } from 'src/app/utilities/map/coordinate';
-import {  } from 'stream';
-import { movieTheatersCreationDTO } from '../movie-theaters.mode';
+
+import { movieTheatersCreationDTO, movieTheatersDTO } from '../movie-theaters.mode';
 
 @Component({
   selector: 'app-movie-theater-form',
@@ -10,11 +10,12 @@ import { movieTheatersCreationDTO } from '../movie-theaters.mode';
   styleUrls: ['./movie-theater-form.component.css']
 })
 export class MovieTheaterFormComponent implements OnInit {
+  initialCoordinates: coordinatesMap[] =[];
 
   constructor(private formBuilder: FormBuilder) { }
   form!: FormGroup;
   @Input()
-  model!: movieTheatersCreationDTO;
+  model!: movieTheatersDTO;
   @Output()
   onSaveChages = new EventEmitter<movieTheatersCreationDTO>()
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class MovieTheaterFormComponent implements OnInit {
     })
     if(this.model !== undefined){
       this.form.patchValue(this.model);
+      this.initialCoordinates.push({latitude: this.model.latitude,longitude: this.model.longitude})
     }
   }
 
