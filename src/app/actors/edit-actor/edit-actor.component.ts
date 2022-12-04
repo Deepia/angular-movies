@@ -11,6 +11,7 @@ export class EditActorComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) { }
   model: actorDTO = {
+    id:1,
     name: "Manoj Bajpai", dateOfBirth: new Date(),
     biography: "default value",
     picture: 'https://img.mensxp.com/media/content/2019/Oct/iconic-movies-that-have-made-manoj-bajpayee-one-of-the-best-performers-in-the-film-industry-1200x900-1570626565.jpg'

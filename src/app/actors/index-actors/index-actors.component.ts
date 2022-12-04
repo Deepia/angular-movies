@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { actorDTO } from '../actors.model';
+import { ActorsService } from '../actors.service';
 
 @Component({
   selector: 'app-index-actors',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexActorsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private actorsService: ActorsService) { }
+  actors!: actorDTO[];
+  columnsToDisplay= ['name', 'actions'];
   ngOnInit(): void {
+    this.actorsService.get().subscribe((actors: actorDTO[])=>{
+         this.actors = actors;
+    })
+  }
+
+  delete(id: number)
+  {
+
   }
 
 }
