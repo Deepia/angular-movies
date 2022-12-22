@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { actorCreationDTO, actorDTO } from '../actors.model';
 import { ActorsService } from '../actors.service';
 
@@ -11,7 +11,7 @@ import { ActorsService } from '../actors.service';
 export class EditActorComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
-    private actorsService: ActorsService) { }
+    private actorsService: ActorsService,private router: Router) { }
   model!: actorDTO;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -23,6 +23,9 @@ export class EditActorComponent implements OnInit {
   }
    saveChanges(actorCreationDTO: actorCreationDTO){
     console.log(actorCreationDTO);
+    this.actorsService.edit(this.model.id,actorCreationDTO).subscribe(()=>{
+          this.router.navigate(['/actors']);
+    });
    }
 
 }

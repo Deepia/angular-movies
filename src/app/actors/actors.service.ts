@@ -30,6 +30,13 @@ export class ActorsService {
      
      return this.http.post(this.apiURL, formData)
   }
+  edit(id:number,actor: actorCreationDTO){
+    const formData = this.buildFormData(actor);
+    return this.http.put(`${this.apiURL}/${id}`,formData);
+  }
+  delete(id: number){
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
   private buildFormData(actor: actorCreationDTO): FormData{
     const formData= new FormData();
     formData.append('name',actor.name);

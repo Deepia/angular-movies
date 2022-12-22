@@ -1,25 +1,29 @@
-import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter, Input, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { tileLayer, latLng, LeafletMouseEvent, Marker, marker, Icon } from 'leaflet';
 
 import { coordinatesMap } from './coordinate';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewChecked {
 
   constructor() { }
+  ngAfterViewChecked(): void {
+    this.layers= this.initialCoordinates.map(
+      value => marker([value.latitude,value.longitude]));
+  }
 
   ngOnInit(): void {
     Icon.Default.imagePath = "assets/leaflet/";
-    this.layers= this.initialCoordinate.map(
-      value => marker([value.latitude,value.longitude])); 
+    
 
   }
 
   @Input()
-  initialCoordinate: coordinatesMap[] =[];
+  initialCoordinates: coordinatesMap[] =[];
   
   @Output()
   onSelectedLocation = new EventEmitter<coordinatesMap>();
@@ -40,3 +44,7 @@ export class MapComponent implements OnInit {
      this.onSelectedLocation.emit({latitude,longitude});
   }
 }
+function onAfterViewChecked() {
+  throw new Error('Function not implemented.');
+}
+
